@@ -16,7 +16,7 @@
 
 <script lang="ts">
 import { Component, Prop, Vue, Watch } from 'vue-property-decorator';
-import actions from '../store/actions'
+import { actions } from '../store/type'
 import {
   State,
   Getter,
@@ -33,7 +33,7 @@ interface HelloDataType {
 export default class HelloWorld extends Vue {
   @State countShop: StoreState.countShop;
   @State other: StoreState.other;
-  @Action(actions.addCount) addCountShop: StoreAction.addCountShop;
+  @Action(actions.addCountShop) addCountShop: StoreAction.addCountShop;
 
   public addCountShopMethod () {
     this.addCountShop(3)

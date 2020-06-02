@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import actions from './actions'
+import { actions, mutations } from './type'
 
 Vue.use(Vuex)
 
@@ -21,13 +21,13 @@ const state: State = {
 export default new Vuex.Store({
   state: state,
   mutations: {
-    'COUNTSHOP' (state, payload) {
+    [mutations.addCountShop] (state, payload) {
       state.countShop += payload ? payload : 1
     }
   },
   actions: {
-    [actions.addCount] ({state, commit}, payload: number) {
-      commit('COUNTSHOP', payload)
+    [actions.addCountShop] ({state, commit}, payload: number) {
+      commit(mutations.addCountShop, payload)
     }
   },
   modules: {
