@@ -16,10 +16,10 @@ import HelloWorld from './components/HelloWorld.vue';
 })
 export default class App extends Vue {
   private mounted () {
-    console.log(111)
+    // console.log(111)
   }
   private created () {
-    console.log('2222')
+    // console.log('2222')
   }
 }
 </script>

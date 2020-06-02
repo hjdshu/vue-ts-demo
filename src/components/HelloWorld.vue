@@ -7,25 +7,40 @@
     <br>
     <br>
     <div>GetHello: {{GetHello}}</div>
+    <br>
+    <br>
+    <div>vuex count: {{countShop}}</div>
+    <button @click="addCountShopMethod">countShopadd</button>
   </div>
 </template>
 
 <script lang="ts">
 import { Component, Prop, Vue, Watch } from 'vue-property-decorator';
+import actions from '../store/actions'
+import {
+  State,
+  Getter,
+  Action,
+  Mutation
+} from 'vuex-class'
 
 interface HelloDataType {
   a: string,
   b: number,
 }
 
-interface DataSb {
-  a: string,
-}
-
 @Component
 export default class HelloWorld extends Vue {
+  @State countShop: StoreState.countShop;
+  @State other: StoreState.other;
+  @Action(actions.addCount) addCountShop: StoreAction.addCountShop;
+
+  public addCountShopMethod () {
+    this.addCountShop(3)
+  }
+
   @Prop() private msg!: string;
-  
+
   // 已经赋值的变量不需要申明type
   private count = 0
   public addCount () {
@@ -48,6 +63,7 @@ export default class HelloWorld extends Vue {
     return this.msg
   }
   
+
   /**
    * setHelloA
    */
@@ -57,11 +73,11 @@ export default class HelloWorld extends Vue {
   
   @Watch('count')
   watchCount (newVal: string, oldVal: string) {
-    console.log(newVal, oldVal)
+    // console.log(newVal, oldVal)
   }
 
   mounted () {
-    console.log(this.msg)
+    console.log(this.other.name)
   }
 }
 </script>
